@@ -16,23 +16,20 @@ export default function DemandePage({ member }: Props) {
 
   const handleAccept = useCallback(async () => {
     setSending(true);
-    const url = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL;
-    if (url) {
-      try {
-        await fetch(url, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify({
-            nom: member.name,
-            role: member.role,
-            de: member.from,
-            slug: member.slug,
-            date: new Date().toLocaleString("fr-FR"),
-          }),
-        });
-      } catch {
-        // non bloquant — l'écran de célébration s'affiche quoi qu'il arrive
-      }
+    try {
+      await fetch("/api/accept", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nom: member.name,
+          role: member.role,
+          de: member.from,
+          slug: member.slug,
+          date: new Date().toLocaleString("fr-FR"),
+        }),
+      });
+    } catch {
+      // non bloquant — l'écran de célébration s'affiche quoi qu'il arrive
     }
     setSending(false);
     setAccepted(true);
