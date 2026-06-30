@@ -1,9 +1,9 @@
 export default function InviteSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f8f3ed] px-6 py-28 md:px-20">
+    <section className="relative overflow-hidden bg-[#FAF7F2] px-6 py-28 md:px-20">
       <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-[0.9fr_1.1fr] md:items-center">
         <div>
-          <p className="text-xs uppercase tracking-[0.45em] text-[#a77d61]">
+          <p className="text-xs uppercase tracking-[0.45em] text-[#6B2737]">
             Notre mariage
           </p>
 
@@ -17,32 +17,32 @@ export default function InviteSection() {
           </p>
         </div>
 
-        <div className="rounded-[2rem] border border-[#e3d4c7] bg-[#fffaf5] p-8 shadow-[0_30px_80px_rgba(42,32,28,0.08)] md:p-12">
+        <div className="rounded-[2rem] border border-[#D9C4A8] bg-white p-8 shadow-[0_30px_80px_rgba(74,16,32,0.10)] md:p-12">
           <div className="flex items-center justify-between gap-8">
-            <p className="font-serif text-4xl font-light">Prénom</p>
-            <span className="font-signature text-6xl text-[#a77d61]">&</span>
-            <p className="font-serif text-4xl font-light">Prénom</p>
+            <p className="font-serif text-4xl font-light">Matthieu</p>
+            <span className="font-signature text-6xl text-[#6B2737]">&</span>
+            <p className="font-serif text-4xl font-light">Melly</p>
           </div>
 
-          <div className="my-10 h-px bg-[#dfcabc]" />
+          <div className="my-10 h-px bg-[#D9C4A8]" />
 
           <div className="grid gap-8 text-left md:grid-cols-2">
             <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-[#a77d61]">
+              <p className="text-xs uppercase tracking-[0.35em] text-[#6B2737]">
                 Date
               </p>
-              <p className="mt-3 text-lg">A definir</p>
+              <p className="mt-3 text-lg">À définir</p>
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-[#a77d61]">
+              <p className="text-xs uppercase tracking-[0.35em] text-[#6B2737]">
                 Lieu
               </p>
               <p className="mt-3 text-lg">Beaujolais, France</p>
             </div>
           </div>
 
-          <button className="mt-10 w-full rounded-full bg-[#2a201c] px-8 py-4 text-xs uppercase tracking-[0.35em] text-white transition hover:bg-[#4b392f]">
+          <button className="mt-10 w-full rounded-full bg-[#6B2737] px-8 py-4 text-xs uppercase tracking-[0.35em] text-white transition hover:bg-[#4A1020]">
             Confirmer ma présence
           </button>
         </div>
