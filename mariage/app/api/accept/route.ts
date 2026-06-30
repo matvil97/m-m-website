@@ -5,12 +5,14 @@ export async function POST(req: NextRequest) {
   const url = process.env.APPS_SCRIPT_URL;
 
   if (url) {
-    await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify(body),
-      redirect: "follow",
+    const params = new URLSearchParams({
+      nom:  body.nom  ?? "",
+      role: body.role ?? "",
+      de:   body.de   ?? "",
+      slug: body.slug ?? "",
+      date: body.date ?? "",
     });
+    await fetch(`${url}?${params.toString()}`, { method: "GET" });
   }
 
   return NextResponse.json({ ok: true });
