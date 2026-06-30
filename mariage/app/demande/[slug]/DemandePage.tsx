@@ -10,8 +10,24 @@ interface Props {
 
 export default function DemandePage({ member }: Props) {
   const [accepted, setAccepted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [noPos, setNoPos] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleAccept = useCallback(async () => {
+    setSending(true);
+    try {
+      await fetch("/api/accept", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: member.slug }),
+      });
+    } catch {
+      // notification non bloquante — on affiche le succès quoi qu'il arrive
+    }
+    setSending(false);
+    setAccepted(true);
+  }, [member.slug]);
 
   const escapingNo = useCallback(() => {
     if (!containerRef.current) return;
@@ -109,12 +125,13 @@ export default function DemandePage({ member }: Props) {
             <div className="relative mt-12 flex items-center gap-6">
               {/* OUI */}
               <motion.button
-                onClick={() => setAccepted(true)}
-                whileHover={{ scale: 1.05 }}
+                onClick={handleAccept}
+                disabled={sending}
+                whileHover={{ scale: sending ? 1 : 1.05 }}
                 whileTap={{ scale: 0.97 }}
-                className="rounded-full bg-[#6B2737] px-10 py-4 text-sm uppercase tracking-[0.3em] text-white shadow-[0_8px_30px_rgba(107,39,55,0.35)] transition-shadow hover:shadow-[0_12px_40px_rgba(107,39,55,0.5)]"
+                className="rounded-full bg-[#6B2737] px-10 py-4 text-sm uppercase tracking-[0.3em] text-white shadow-[0_8px_30px_rgba(107,39,55,0.35)] transition-shadow hover:shadow-[0_12px_40px_rgba(107,39,55,0.5)] disabled:opacity-70"
               >
-                Oui, avec joie !
+                {sending ? "..." : "Oui, avec joie !"}
               </motion.button>
 
               {/* NON — s'échappe */}
