@@ -46,7 +46,7 @@ export const weddingParty: WeddingMember[] = [
   // Témoins — Melly
   { slug: "valerie-temoin", name: "Valérie",  role: "temoin", from: "melly" },
   { slug: "levi-temoin",    name: "Lévi",     role: "temoin", from: "melly" },
-  { slug: "heliane-temoin", name: "Héliane",  role: "temoin", from: "melly" },
+  { slug: "melyna-temoin",  name: "Melyna",   role: "temoin", from: "melly" },
 ];
 
 export function getMemberBySlug(slug: string): WeddingMember | undefined {
