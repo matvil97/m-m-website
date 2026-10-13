@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { WeddingMember, getRoleLabel, getFromLabel } from "@/lib/weddingParty";
+import { WeddingMember, getRoleLabel, getRoleDescription, getFromLabel } from "@/lib/weddingParty";
 
 interface Props {
   member: WeddingMember;
@@ -47,6 +47,7 @@ export default function DemandePage({ member }: Props) {
   }, []);
 
   const roleLabel = getRoleLabel(member.role, member.from);
+  const roleDescription = getRoleDescription(member.role);
   const fromLabel = getFromLabel(member.from);
 
   return (
@@ -121,6 +122,11 @@ export default function DemandePage({ member }: Props) {
               d'être{" "}
               <span className="italic text-[#6B2737]">{roleLabel}</span> ?
             </p>
+            {roleDescription && (
+              <p className="mt-3 text-xs uppercase tracking-[0.3em] text-[#6B2737]">
+                {roleDescription}
+              </p>
+            )}
 
             <p className="mt-6 max-w-xs text-sm leading-7 text-[#7b6254]">
               {fromLabel} te réserve une place toute spéciale à ses côtés pour

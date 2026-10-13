@@ -1,4 +1,4 @@
-export type WeddingRole = "cavalier" | "demoiselle" | "temoin";
+export type WeddingRole = "cavalier" | "demoiselle" | "dame" | "temoin";
 export type WeddingCouple = "matthieu" | "melly";
 
 export interface WeddingMember {
@@ -24,9 +24,11 @@ export const weddingParty: WeddingMember[] = [
   { slug: "christian",   name: "Christian", role: "cavalier",   from: "matthieu" },
   { slug: "georghand",   name: "Georghand", role: "cavalier",   from: "matthieu" },
 
+  // Dame d'honneur — Melly
+  { slug: "heliane",     name: "Héliane",   role: "dame",       from: "melly" },
+
   // Demoiselles d'honneur — Melly
   { slug: "noemie",      name: "Noémie",    role: "demoiselle", from: "melly" },
-  { slug: "heliane",     name: "Héliane",   role: "demoiselle", from: "melly" },
   { slug: "glory",       name: "Glory",     role: "demoiselle", from: "melly" },
   { slug: "anouck",      name: "Anouck",    role: "demoiselle", from: "melly" },
   { slug: "melyna",      name: "Melyna",    role: "demoiselle", from: "melly" },
@@ -56,7 +58,13 @@ export function getMemberBySlug(slug: string): WeddingMember | undefined {
 export function getRoleLabel(role: WeddingRole, from: WeddingCouple): string {
   if (role === "cavalier")   return "mon cavalier d'honneur";
   if (role === "demoiselle") return "ma demoiselle d'honneur";
+  if (role === "dame")       return "ma dame d'honneur";
   return from === "matthieu" ? "mon témoin" : "ma témoin";
+}
+
+export function getRoleDescription(role: WeddingRole): string | undefined {
+  if (role === "dame") return "responsable des demoiselles d'honneur";
+  return undefined;
 }
 
 export function getFromLabel(from: WeddingCouple): string {

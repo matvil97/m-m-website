@@ -1,4 +1,4 @@
-import { weddingParty, getRoleLabel, WeddingCouple } from "@/lib/weddingParty";
+import { weddingParty, getRoleLabel, WeddingCouple, WeddingRole } from "@/lib/weddingParty";
 
 function GroupSection({
   title,
@@ -7,7 +7,7 @@ function GroupSection({
 }: {
   title: string;
   from: WeddingCouple;
-  role: "cavalier" | "demoiselle" | "temoin";
+  role: WeddingRole;
 }) {
   const members = weddingParty.filter(
     (m) => m.from === from && m.role === role
@@ -52,6 +52,7 @@ export default function DemandesPage() {
 
         <div className="mt-14 space-y-12">
           <GroupSection title="Cavaliers d'honneur — Matthieu" from="matthieu" role="cavalier" />
+          <GroupSection title="Dame d'honneur — Melly" from="melly" role="dame" />
           <GroupSection title="Demoiselles d'honneur — Melly" from="melly" role="demoiselle" />
           <GroupSection title="Témoins — Matthieu" from="matthieu" role="temoin" />
           <GroupSection title="Témoins — Melly" from="melly" role="temoin" />
